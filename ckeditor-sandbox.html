@@ -14,48 +14,43 @@
     <button onclick="setContent()">Set Content</button>
     <button onclick="getContent()">Get Content</button>
     <script>
-        // CKEDITOR.replace('editor1');
-        var id = 0;
+    // CKEDITOR.replace('editor1');
+    var id = 0;
 
-        function del(){
-            var removeId = $(this).attr('data-id');
-            $('.' + removeId).remove();
-        }
+    function del(){
+        var removeId = $(this).attr('data-id');
+        $('.' + removeId).remove();
+    }
 
-        function add(){
-            // console.log($('.editor').attr('id'));
-            var idname = 'editor' + ++id;
-            $('<div class="'+ idname +'"><textarea class="editor" id="' + idname + '"></textarea>').insertBefore('#add');
-            CKEDITOR.replace(idname);
-            $('<button data-id="' + idname + '">delete ' + idname + '</button></div>').insertAfter('#'+ idname);
-            $( '[data-id=' + idname + ']' ).bind( "click", del);
-        }
+    function add(){
+        // console.log($('.editor').attr('id'));
+        var idname = 'editor' + ++id;
+        $('<div class="'+ idname +'"><textarea class="editor" id="' + idname + '"></textarea>').insertBefore('#add');
+        CKEDITOR.replace(idname);
+        $('<button data-id="' + idname + '">delete ' + idname + '</button></div>').insertAfter('#'+ idname);
+        $( '[data-id=' + idname + ']' ).bind( "click", del);
+    }
 
-        // 设置 CKEditor 中的内容
-        function setContent() {
-            // editor1 是上面的 id
-            CKEDITOR.instances.editor1.setData('<b>This is for test</b>');
-        }
-        // 获取 CKEditor 中的内容
-        function getContent() {
-            var content = CKEDITOR.instances.editor1.getData();
-            alert(content);
-        };
+    // 设置 CKEditor 中的内容
+    function setContent() {
+        // editor1 是上面的 id
+        CKEDITOR.instances.editor1.setData('<b>This is for test</b>');
+    }
+    // 获取 CKEditor 中的内容
+    function getContent() {
+        var content = CKEDITOR.instances.editor1.getData();
+        alert(content);
+    };
 
-        function getResult(){
-            // $('.editor').each(function(index, elem){
-            //     elem
-            // });
+    function getResult(){
+        // $('.editor').each(function(index, elem){
+        //     elem
+        // });
 
-            _.forEach(CKEDITOR.instances, function(value, key) {
-                console.log(value.getData());
-            });
-        }
-
-        $(function() {
-            
-
+        _.forEach(CKEDITOR.instances, function(value, key) {
+            console.log(value.getData());
         });
+    }
     </script>
 </body>
 </html>
